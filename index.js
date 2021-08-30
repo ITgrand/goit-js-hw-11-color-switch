@@ -13,26 +13,26 @@ refs = {
   stopBtn: document.querySelector('[data-action="stop"]'),
 };
 
-refs.startBtn.addEventListener("click", onStartChangeColor);
-refs.stopBtn.addEventListener("click", onStopChangeColor);
+refs.startBtn.addEventListener("click", onStart);
+refs.stopBtn.addEventListener("click", onStop);
 
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-function changeColorBody() {
+function changeBodyColor() {
   document.body.style.backgroundColor =
     colors[randomIntegerFromInterval(0, colors.length - 1)];
 }
 
 let intervalId = null;
 
-function onStartChangeColor() {
+function onStart() {
   refs.startBtn.setAttribute("disabled", true);
-  intervalId = setInterval(changeColorBody, 500);
+  intervalId = setInterval(changeBodyColor, 1000);
 }
 
-function onStopChangeColor() {
+function onStop() {
   refs.startBtn.removeAttribute("disabled", true);
   clearInterval(intervalId);
 }
